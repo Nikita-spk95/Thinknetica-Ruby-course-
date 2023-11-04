@@ -5,19 +5,15 @@ month = gets.chomp.to_i
 puts "введите год:"
 year = gets.chomp.to_i
 
-month_array = [31, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-
-  if (year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0))
-    month_array.insert(1, 29)
-    puts "Год високосный (366 дней)"
-  else 
-    month_array.insert(1, 28)
-    puts "Год не високосный год (365 дней)"
-  end
+february_days_count = if (year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0))
+                        29
+                      else
+                        28
+                      end
+month_array = [31, february_days_count, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 your_day = day
 
-# в данном случае я добавляю в условие -1 для поправки на индексацию при вводе пользователем месяца
 (0...month - 1).each do |m|
   your_day += month_array[m]
 end

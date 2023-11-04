@@ -1,11 +1,2 @@
-numbers_array = []
-
-first_number = 10
-
-loop do 
-  first_number += 5
-  break if first_number > 100
-  numbers_array << first_number
-end
-
+numbers_array = (10..100).step(5).to_a
 puts numbers_array.to_s

@@ -12,16 +12,11 @@ loop do
   puts "Введите количество единиц вашего товара: "
   quantity = gets.chomp.to_i
   
-  basket_hash[product_name.to_sym] = {price => quantity}    
+  basket_hash[product_name.to_sym] = {price: price, quantity: quantity}   
 end
 
 full_price = 0
 basket_hash.each do |key, value|
-  value.each do |price_value, quantity_value|
-    full_price += price_value * quantity_value
-  end
+  puts "Товар: #{key}\nЦена за ед.: #{value[:price]}\nКол-во ед. товара: #{value[:quantity]}"
+  puts "Финальная цена на товар #{key}: #{value[:price] * value[:quantity]}"
 end
-
-puts "Список товаров в вашей карзине: #{basket_hash}"
-
-puts "Итоговая сумма за все покупки: #{full_price}"
