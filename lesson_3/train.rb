@@ -1,7 +1,7 @@
 class Train
 
-  attr_accessor :speed
-  attr_reader :number, :type, :carriages, :current_station
+  attr_accessor :speed, :carriages, :current_station
+  attr_reader :number, :type, :route
   def initialize(number, type)
     @number = number
     @type = type
@@ -10,50 +10,50 @@ class Train
   end
 
   def speed_up(speed)
-    speed += speed
+    self.speed += speed
   end 
 
   def stop
-    speed = 0
+    self.speed = 0
   end
 
   def take_carriage
-    carriages += 1 if speed == 0 
+    self.carriages += 1 if self.speed == 0 
   end
 
   def drop_carriage
-    carriages -= 1 if speed == 0 && carriages > 0
+    self.carriages -= 1 if self.speed == 0 && self.carriages > 0
   end
 
   def take_route(route)
-    route = route
-    current_station = route.stations.first
-    current_station.add_train(self)
+    @route = route
+    self.current_station = route.stations.first
+    current_station.train_arrival(self)
   end
   
   def move_forward
     return unless next_station
-    current_station.send_train(self)
-    current_station = next_station
-    current_station.add_train(self)
+    current_station.train_departure(self)
+    self.current_station = next_station
+    current_station.train_arrival(self)
   end
 
   def move_backward
     return unless previous_station
-    current_station.send_train(self)
-    current_station = previous_station
-    current_station.add_train(self)
+    current_station.train_departure(self)
+    self.current_station = previous_station
+    current_station.train_arrival(self)
   end
 
   def next_station
-    return unless @route
-    current_index = @route.stations.index(current_station)
-    @route.stations[current_index + 1] if current_index < @route.stations.size - 1
+    return unless route
+    current_index = route.stations.index(current_station)
+    route.stations[current_index + 1] if current_index < route.stations.size - 1
   end
 
   def previous_station
-    return unless @route
-    current_index = @route.stations.index(current_station)
-    @route.stations[current_index - 1] if current_index.positive?
+    return unless route
+    current_index = route.stations.index(current_station)
+    route.stations[current_index - 1] if current_index.positive?
   end
 end
