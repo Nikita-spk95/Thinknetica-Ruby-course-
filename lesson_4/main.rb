@@ -176,7 +176,7 @@ class Main
   def move_train_backward
     trains_list
 
-    puts "Укажите порядковый номер поезда, который отправится на предыдущую станцию"
+    puts "Укажите номер поезда, который отправится на предыдущую станцию"
     train_index = gets.chomp.to_i
     train = @trains[train_index]
     train.move_backward
@@ -216,11 +216,13 @@ class Main
     puts "Выберите номер маршрута к которому хотите добавить станцию"
     routes_list
     user_input = gets.chomp.to_i
-    
-    puts "Напишите название станции: "
-    station_name = gets.chomp.to_s.downcase
-    @routes[user_input - 1].add_station(station_name)
-    puts "Станция #{station_name} добавлена"
+
+    stations_list
+    puts "Введите номер станции для вывода списка поездов"
+    user_choice = gets.chomp.to_i 
+
+    @routes[user_input].add_station(@stations[user_choice])
+    puts "Станция добавлена"
   end
 
   def remove_station_from_route
@@ -228,10 +230,12 @@ class Main
     routes_list
     user_input = gets.chomp.to_i
     
-    puts "Напишите название станции:"
-    station_name = gets.chomp.to_s.downcase
-    @routes[user_input - 1].remove_station(station_name)
-    puts "Станция #{station_name} удалена"
+    stations_list
+    puts "Введите номер станции для вывода списка поездов"
+    user_choice = gets.chomp.to_i 
+
+    @routes[user_input].remove_station(@stations[user_choice])
+    puts "Станция удалена" 
   end
 
   def create_route

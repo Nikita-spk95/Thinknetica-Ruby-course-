@@ -1,5 +1,5 @@
 class CargoСarriage < Carriage 
     def initialize
-    super(:cargo)
-  end
+      super(:cargo)
+    end
 end
