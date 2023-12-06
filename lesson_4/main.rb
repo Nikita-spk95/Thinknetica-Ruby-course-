@@ -218,7 +218,7 @@ class Main
     user_input = gets.chomp.to_i
 
     stations_list
-    puts "Введите номер станции для вывода списка поездов"
+    puts "Введите номер станции которую хотите добавить"
     user_choice = gets.chomp.to_i 
 
     @routes[user_input].add_station(@stations[user_choice])
@@ -231,7 +231,7 @@ class Main
     user_input = gets.chomp.to_i
     
     stations_list
-    puts "Введите номер станции для вывода списка поездов"
+    puts "Введите номер станции которую хотите удалить"
     user_choice = gets.chomp.to_i 
 
     @routes[user_input].remove_station(@stations[user_choice])
