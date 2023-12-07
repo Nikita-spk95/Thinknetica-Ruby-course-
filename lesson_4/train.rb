@@ -2,7 +2,7 @@ class Train
 
   attr_accessor :speed, :carriages, :current_station
   attr_reader :number, :type, :route
-  def initialize(number, type)
+  def initialize(number)
     @number = number
     @type = type
     @carriages = []
@@ -17,6 +17,10 @@ class Train
     self.speed = 0
   end
 
+  def type
+    raise NotImplementedError
+  end
+
   def carriages_count
     carriages.size
   end
@@ -26,7 +30,7 @@ class Train
   end
 
   def drop_carriage
-    @carriages.delete_at(-1) if speed.zero?
+    carriages.delete_at(-1) if speed.zero?
   end
 
   def take_route(route)
