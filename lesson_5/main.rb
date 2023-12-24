@@ -87,6 +87,8 @@ class Main
     end
   end
 
+  private
+
   def create_train
     puts "Сперва укажите номер вашего поезда"
     number = gets.chomp.to_i
@@ -182,8 +184,6 @@ class Main
     train.move_backward
     puts "Поезд отправился на предыдущую станцию #{train.current_station.name}"
   end
-
-  private # у классов приведённых ниже нет наследования
 
   def create_station
     puts "Введите название вашей станции: "
