@@ -9,6 +9,8 @@ class Train
   attr_accessor :speed, :carriages, :current_station
   attr_reader :number, :type, :route
 
+  NUMBER_FORMAT = /^[\w]{3}-?[\w]{2}$/i
+
   @@trains = []
 
   def self.find(number)
@@ -85,6 +87,7 @@ class Train
 
   def validate!
     errors = []
+    errors << "Неверный формат номера" if number !~ NUMBER_FORMAT
     errors << "Номер поезда не может быть nil" if @type.nil?
     errors << "Колличество вагонов не может быть nil" if carriages.nil?
     errors << "Неверный тип поезда" unless @type == :passenger or @type == :cargo
