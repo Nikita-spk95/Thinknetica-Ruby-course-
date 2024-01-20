@@ -87,7 +87,7 @@ class Train
 
   def validate!
     errors = []
-    errors << "Неверный формат номера" if number !~ NUMBER_FORMAT
+    errors << "Формат номера номера должен быть 001-AZ" if @number !~ /^\d{3}[\W.-][a-z]{2}$/i   
     errors << "Номер поезда не может быть nil" if @type.nil?
     errors << "Колличество вагонов не может быть nil" if carriages.nil?
     errors << "Неверный тип поезда" unless @type == :passenger or @type == :cargo
