@@ -9,8 +9,6 @@ class Train
   attr_accessor :speed, :carriages, :current_station
   attr_reader :number, :type, :route
 
-  NUMBER_FORMAT = /^[\w]{3}-?[\w]{2}$/i
-
   @@trains = []
 
   def self.find(number)
