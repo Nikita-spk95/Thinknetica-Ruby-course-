@@ -5,12 +5,12 @@ class Carriage
   include CompanyManufacture
   include Validation
 
-  def type
-    raise NotImplementedError
-    validate!
-  end
+def initialize
+  @type = type
+  validate!
+end
 
-    protected
+  private
 
   def validate!
     errors = []

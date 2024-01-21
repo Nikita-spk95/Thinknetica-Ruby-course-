@@ -81,7 +81,7 @@ class Train
     route.stations[current_index - 1] if current_index.positive?
   end
 
-  protected
+  private
 
   def validate!
     errors = []

@@ -20,7 +20,7 @@ class Route
     stations.delete(station)
   end
 
-  protected
+  private
 
   def validate!
     raise "Необходимо создать начальную и конечную станции" if @stations.size < 2

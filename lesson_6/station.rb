@@ -32,7 +32,7 @@ class Station
     trains.delete(train)
   end
 
-  protected
+  private
 
   def validate!
     errors = []
